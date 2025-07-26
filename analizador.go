@@ -32,7 +32,7 @@ func AnalizarEntrada(entrada string) (string, []string, bool) {
 	
 	// Si la entrada está vacía después de limpiar, no hay nada que procesar
 	if entrada == "" {
-		return "", nil, false
+		return "", nil, false // No hay comando, no hay argumentos, no es segundo plano
 	}
 
 	// PASO 2: Detectar ejecución en segundo plano
@@ -53,6 +53,7 @@ func AnalizarEntrada(entrada string) (string, []string, bool) {
 	// PASO 3: Separar comando y argumentos
 	// strings.Fields divide la cadena en palabras separadas por espacios
 	// Automáticamente maneja múltiples espacios consecutivos
+	// ejemplo: "ls -l /tmp" → ["ls", "-l", "/tmp"]
 	partes := strings.Fields(entrada)
 	
 	// El primer elemento es siempre el comando principal
